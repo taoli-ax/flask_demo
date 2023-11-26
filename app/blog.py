@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, g
+import sqlite3
+
+from flask import Blueprint, render_template, request, flash, redirect, url_for, abort, g, current_app
 
 from app.auth import login_required
 from app.db import get_db
@@ -9,6 +11,10 @@ bp = Blueprint('blog', __name__)
 @bp.route('/', methods=('GET', 'POST'))
 def index():
     db = get_db()
+    # db = sqlite3.connect(
+    #     current_app.config['DATABASE'],
+    #     detect_types=sqlite3.PARSE_DECLTYPES
+    # )
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'

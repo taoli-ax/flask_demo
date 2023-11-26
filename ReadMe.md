@@ -32,3 +32,13 @@ copy to httpd.conf file
 
 ### build a flask app if not exist:
 use the command and run `flask --app app run --debug`
+
+
+### 找不到表的原因
+```shell
+[Mon Nov 27 01:41:26.098807 2023] [wsgi:error] [pid 4404:tid 1216] H:\\Programs\\Apache24\\bin\\app.sqlite\r
+[Mon Nov 27 01:41:26.106838 2023] [wsgi:error] [pid 4404:tid 1216] [client ::1:57768] H:\\Programs\\Apache24\\bin\\app.sqlite\r
+```
+
+- 注意apache用的是bin目录下的sqlite文件，该表是空的，为什么会自动创建，未知。
+- 由于官方的做法会导致这样的问题，可以尝试用sqlalchemy配置数据，用配置类加载配置，
