@@ -30,3 +30,5 @@ WSGIPythonHome "i:/pythonproject/flaskproject/flask-tmp/venv"
 ```
 copy to httpd.conf file
 
+### build a flask app if not exist:
+use the command and run `flask --app app run --debug`
