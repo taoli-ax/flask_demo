@@ -2,12 +2,11 @@ import os
 
 from flask import Flask
 
-BASE_DIR = os.path.dirname(os.path.abspath(__name__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    # print("app instance path:", os.path.join(app.instance_path, 'app.sqlite'))
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(BASE_DIR, 'app.sqlite'),
